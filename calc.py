@@ -102,11 +102,11 @@ while (inp!=0):
         print("\n-------Matriz SRU,SRC-------\n")
         matrizsrusrc = mp.MsruMsrc(mR,mT)
         matrizsrusrc = np.round(matrizsrusrc,3)
-        print("MsruMsrc\n")        
-        for v in matrizsrusrc:
-            print(np.round(v,3))
+        print("MsruMsrc\n",matrizsrusrc)        
+        ##for v in matrizsrusrc:
+          ##  print(np.round(v,3))
         print("\n-------Matriz de pontos Multiplicada-------\n")
-        matrizpontossrc = np.dot(matrizsrusrc,pmatriz)
+        matrizpontossrc = np.round(np.dot(matrizsrusrc,pmatriz),3)
         nvrp=np.round(np.dot(matrizsrusrc,np.append(vrp,1).T),3)
         print(matrizpontossrc)
         print("VRP=",nvrp)
