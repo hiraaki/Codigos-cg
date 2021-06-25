@@ -163,7 +163,7 @@ def matrizProjecaoPers(matrizSRC,dp):
     print("\n-------Matriz Projeção-------\n")    
     print(mpers)    
     print("\n-------Pontos Projetados-------\n")    
-    mPontoPers = np.dot(mpers,matrizSRC)
+    mPontoPers = np.round(np.dot(mpers,matrizSRC),3)
     print(mPontoPers)
     vetaux = mPontoPers[3]
     mPontoPers = np.round((mPontoPers/vetaux),3)

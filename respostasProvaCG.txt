@@ -3,11 +3,10 @@ Para a solução do problema foram realizadas as seguintes operações:
  - Rx(69,8)
  - Ry(-41,451)
  - Rz(82,709)
- - Tcg(0 0 0,5)
-As transformações serão descorridas abaixo
+ - Tcg(0;0;0,5)
+As transformações serão discorridas abaixo, observando que o ultimo ponto da matriz de pontos refere-se ao centro geométrico.
 
-Para a translação do Vertice A para a origem temos a multiplicação da matriz de 
-translação com valores de -(A) pela matriz de pontos.
+Para a translação do Vertice A para a origem temos a multiplicação da matriz de translação com valores de -(A) pela matriz de pontos.
 [ 1.     0.     0.    10.868]   [-10.868  -7.001  -5.67    3.98    7.847   9.178  -0.211]
 [ 0.     1.     0.    -1.64 ] x [  1.64    5.736   9.832  -9.832  -5.736  -1.64    0.   ]
 [ 0.     0.     1.    -2.861]   [  2.861   4.368   0.437  -4.062  -2.556  -6.487  -0.453]
@@ -18,10 +17,7 @@ resultando em:
 [  0.      1.507  -2.424  -6.923  -5.417  -9.348  -3.314]
 [  1.      1.      1.      1.      1.      1.      1.   ]
 
-Para a Rotação Rx(69,8), foi realizado o calculo do ângulo visando colocar o 
-vertice B no plano xz, para isso foi calculado o arco-tangente dos valores de 
-y/z de B, calculando o seno(69,8)=0.938 e coseno(69,8)=0.345, temos a matriz 
-rotação. Desta forma multiplicando pela matriz resultante anterior temos:
+Para a Rotação Rx(69,8), foi realizado o calculo do ângulo visando colocar o vertice B no plano xz, para isso foi calculado o arco-tangente dos valores de y/z de B, calculando o seno(69,8)=0.938 e coseno(69,8)=0.345, temos a matriz rotação. Desta forma multiplicando pela matriz resultante anterior temos:
 [ 1.     0.     0.     0.   ]   [  0.      3.867   5.198  14.848  18.715  20.046  10.657]
 [ 0.     0.345 -0.938  0.   ] x [  0.      4.096   8.192 -11.472  -7.376  -3.28   -1.64 ]
 [ 0.     0.938  0.345  0.   ]   [  0.      1.507  -2.424  -6.923  -5.417  -9.348  -3.314]
@@ -32,10 +28,7 @@ resultando em:
 [  0.      4.364   6.851 -13.157  -8.793  -6.306  -2.683]
 [  1.      1.      1.      1.      1.      1.      1.   ]
 
-Para a segunda Rotação Ry(-41,451), foi realizada vizando colocar o Vertice B encima
-de 0z, zerando o valor de x em B, realizado o calculo do arcotangente utilizando 
-os valores de x/z de B obtendo o angulo, sendo negativa pela ratação ser horaria,
-calculando o seno(-41,451)=-0.663 coseno(-41,451)=0.748. Desta forma a transfomação
+Para a segunda Rotação Ry(-41,451), foi realizada vizando colocar o Vertice B encima de 0z, zerando o valor de x em B, realizado o calculo do arcotangente utilizando os valores de x/z de B obtendo o angulo, sendo negativa pela ratação ser horaria, calculando o seno(-41,451)=-0.663 coseno(-41,451)=0.748. Desta forma a transfomação
 fica:
 [ 0.748  0.    -0.663  0.   ]   [  0.      3.867   5.198  14.848  18.715  20.046  10.657]
 [ 0.     1.     0.     0.   ] x [  0.      0.      5.104   2.536   2.537   7.64    2.544]
@@ -47,20 +40,63 @@ resultando em:
 [ 0.     5.831  8.575 -0.001  5.83   8.574  5.059]
 [ 1.     1.     1.     1.     1.     1.     1.   ]
 
-Na terceira e ultima rotação Rz(82,709), finalmente podemos rotacionar o vertice C, 
-sem quealtere A ou B, sendo assim calculamos o angulo utilizando os valores de (x/y)
-uilizando o valor de angulo positivo, visto que é uma rotação antihorária. Assim 
-temos, a matriz rotação e a multiplicação abaixo:
+Na terceira e ultima rotação Rz(82,709), finalmente podemos rotacionar o vertice C, sem quealtere A ou B, sendo assim calculamos o angulo utilizando os valores de (x/y) uilizando o valor de angulo positivo, visto que é uma rotação antihorária. Assim temos, a matriz rotação e a multiplicação abaixo:
 [ 0.127 -0.992  0.     0.   ]   [ 0.     0.    -0.653 19.839 19.839 19.186  9.756]
 [ 0.992  0.127  0.     0.   ] x [ 0.     0.     5.104  2.536  2.537  7.64   2.544]
 [ 0.     0.     1.     0.   ]   [ 0.     5.831  8.575 -0.001  5.83   8.574  5.059]
 [ 0.     0.     0.     1.   ]   [ 1.     1.     1.     1.     1.     1.     1.   ]
 resultado em:
 [ 0.     0.    -5.146  0.002  0.001 -5.143 -1.285]
-[ 0.     0.     0.    20.    20.001 20.    10.   ]
+[ 0.     0.     0.    20.    20.000 20.    10.   ]
 [ 0.     5.831  8.575 -0.001  5.83   8.574  5.059]
 [ 1.     1.     1.     1.     1.     1.     1.   ]
 
+Por ultimo é realizado a translaçao do centro geométrico para as coordenadas(0; 0; -0,5)
+Como o centro geométrico está representado na matriz de pontos como o ultimo ponto,
+basta subtrair as coodenadas do novo centro pelo anterior, tendo assim a matriz de
+translação abaixo, e a multiplicação para o resultado final.
+[  1.      0.      0.      1.285]   [ 0.     0.    -5.146  0.002  0.001 -5.143 -1.285]
+[  0.      1.      0.    -10.   ] x [ 0.     0.     0.    20.    20.000 20.    10.   ]
+[  0.      0.      1.     -4.558]   [ 0.     5.831  8.575 -0.001  5.83   8.574  5.059]
+[  0.      0.      0.      1.   ]   [ 1.     1.     1.     1.     1.     1.     1.   ]
+resultando em:
+[  1.285   1.285  -3.861   1.287   1.286  -3.858   0.   ]
+[-10.    -10.    -10.     10.     10.000  10.      0.   ]
+[ -4.558   1.273   4.017  -4.559   1.272   4.016   0.501]
+[  1.      1.      1.      1.      1.      1.      1.   ]
 
+A) As coordenadas finais dos vertices do objeto são:
+A(1.285;-10;-4.558) B(1.285;-10;1.273) C(-3.861;-10;4.017)
+D(1.287; 10; -4.559) E(1.286; 10; 1.272) F(-3.858;10;4.016)
 
+B) A matriz composta é dada pela multiplicação das matrizes de transformação na ordem inversa de que foram aplicadas, desta forma temos a multiplicação abaixo:
+Multiplicando Tcg(0;0;0,5) x Rz(82,709)
+[  1.      0.      0.      1.285]   [ 0.127 -0.992  0.     0.   ]
+[  0.      1.      0.    -10.   ] x [ 0.992  0.127  0.     0.   ]
+[  0.      0.      1.     -4.558]   [ 0.     0.     1.     0.   ]
+[  0.      0.      0.      1.   ]   [ 0.     0.     0.     1.   ]
+
+Multiplicando o resultado por Ry(-41,451)
+[  0.127  -0.992   0.      1.285]   [ 0.748  0.    -0.663  0.   ]
+[  0.992   0.127   0.    -10.   ] x [ 0.     1.     0.     0.   ]
+[  0.      0.      1.     -4.558]   [ 0.663  0.     0.748  0.   ]
+[  0.      0.      0.      1.   ]   [ 0.     0.     0.     1.   ]
+
+Multiplicando o resultado por Rx(69,8)
+[  0.095  -0.992  -0.084   1.285]   [ 1.     0.     0.     0.   ]
+[  0.742   0.127  -0.658 -10.   ] x [ 0.     0.345 -0.938  0.   ]
+[  0.663   0.      0.748  -4.558]   [ 0.     0.938  0.345  0.   ]
+[  0.      0.      0.      1.   ]   [ 0.     0.     0.     1.   ]
+Multiplicando o resultado por Ta(0;0;0)
+[  0.095  -0.421   0.902   1.285]   [ 1.     0.     0.    10.868]
+[  0.742  -0.574  -0.346 -10.   ] x [ 0.     1.     0.    -1.64 ]
+[  0.663   0.702   0.258  -4.558]   [ 0.     0.     1.    -2.861]
+[  0.      0.      0.      1.   ]   [ 0.     0.     0.     1.   ]
+Matriz composta:
+[ 0.095 -0.421  0.902  0.428]   [-10.868  -7.001  -5.67    3.98    7.847   9.178]
+[ 0.742 -0.574 -0.346 -0.   ] x [  1.64    5.736   9.832  -9.832  -5.736  -1.64 ]
+[ 0.663  0.702  0.258  0.758]   [  2.861   4.368   0.437  -4.062  -2.556  -6.487]
+[ 0.     0.     0.     1.   ]   [  1.      1.      1.      1.      1.      1.   ]
+
+Multiplicando a matriz Composta pela matriz de pontos originais, obtemos os mesmos resultados.
 

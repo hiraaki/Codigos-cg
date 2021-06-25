@@ -124,18 +124,21 @@ while (inp!=0):
 
     elif inp == 9:
         print("\n-------Matriz composta-------\n")
-        mcomposta = matrizcomposta.pop(0)        
+        mcomposta = matrizcomposta.pop(0)
+        print(np.round(mcomposta,3),"\n")
         for m in matrizcomposta:
             mcomposta = np.dot(mcomposta,m)
-        print(mcomposta)
+            print(np.round(m,3),"\n")
+            print(np.round(mcomposta,3),"\n\n")
+        print(np.round(mcomposta,3))
     elif inp == 10:
         print("\n-------Gerando Matriz Composta SRU Para SRT-------\n")
-        print(matrizjp)
-        print(matrizSrcSrp)
-        print(matrizsrusrc)
+        print("Matriz Projeção\n",matrizjp,"\n")
+        print("Matriz SRCSRP\n",matrizSrcSrp,"\n")
+        print("Matriz SRUSRC\n",matrizsrusrc,"\n")
         mcomposta = np.dot(matrizjp,matrizSrcSrp)
         mcomposta = np.dot(mcomposta,matrizsrusrc)
-        print(np.round(mcomposta,3))
+        print("Matriz Composta SRUSRT\n",np.round(mcomposta,3))
 
     elif inp == 11:
         print("\n-------Gerando Matriz de pontos de SRU Para SRT-------\n")
@@ -145,5 +148,9 @@ while (inp!=0):
         matrizpontossrt[1] = matrizpontossrt[1]/matrizpontossrt[3]
         matrizpontossrt[3] = matrizpontossrt[3]/matrizpontossrt[3]
         print("\n-------Pontos Normalizados-------\n")
-        print(matrizpontossrt)
+        print(np.round(matrizpontossrt,3)) 
+    
+    elif inp == 12:
+        print("\n-------Multiplicação Matriz Composta pela de pontos-------\n")
+        print (np.round((np.dot(mcomposta,matriz)),3))
         
