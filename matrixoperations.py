@@ -126,7 +126,7 @@ def vetorV(vn, vvu):
 
 def vetorU(vv,vn):
     vu=np.round(np.cross(vv,vn),3)
-    print("u^=",vu)
+    print("u^=",vv,"X",vn,"\nu^=",vu)
     return vu
 
 def matrizR(vu,vv,vn):
