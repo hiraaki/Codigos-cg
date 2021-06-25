@@ -26,8 +26,8 @@ while (inp!=0):
     print("\n--------------------------\n")
     print(" Imprimir matriz Atual(1)\n Rotação(2)\n Translação(3)\n Scala(4)\n Cizalhamento(5)")
     print(" Centro Geometrico(6)\n Converter SRU Para SRC(7)")
-    print(" Converter SRC Para SRP(8)\n Gerar Matriz Composta SRU Para SRT(9)")
-    print(" Gerar Matriz de pontos de SRU Para SRT(10)\n Gerando Matriz de pontos de SRU Para SRT(11)")
+    print(" Converter SRC Para SRP(8)\n Gerar Matriz Composta(9)")
+    print(" Gerar Matriz Composta SRU Para SRT(10)\n Gerando Matriz de pontos de SRU Para SRT(11)")
 
     inp = int(input("Digite a opção:"))
 
