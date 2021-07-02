@@ -24,12 +24,12 @@ inp = -1
 pmatriz = matriz
 while (inp!=0):
     print("\n--------------------------\n")
-    print(" Imprimir matriz Atual(1)\n Rotação(2)\n Translação(3)\n Scala(4)\n Cizalhamento(5)")
+    print(" Imprimir matriz Atual(1)\n Rotacao(2)\n Translacao(3)\n Scala(4)\n Cizalhamento(5)")
     print(" Centro Geometrico(6)\n Converter SRU Para SRC(7)")
     print(" Converter SRC Para SRP(8)\n Gerar Matriz Composta(9)")
     print(" Gerar Matriz Composta SRU Para SRT(10)\n Gerando Matriz de pontos de SRU Para SRT(11)")
 
-    inp = int(input("Digite a opção:"))
+    inp = int(input("Digite a opcao:"))
 
     if inp == 1:
          print("\n-------Matriz Atual-------\n")
@@ -42,7 +42,7 @@ while (inp!=0):
         pmatriz = np.round(pmatriz,3) 
         print("\n-------Matriz Rotacionada-------\n")
         print(pmatriz)
-        if(input("Armazenar para à compsta?")=='s'):
+        if(input("Armazenar para a compsta?")=='s'):
             matrizcomposta.insert(0,matrizRotacao)
 
     elif inp == 3:
@@ -53,7 +53,7 @@ while (inp!=0):
         pmatriz = np.round(pmatriz,3)
         print("\n-------Matriz Translada-------\n")
         print(pmatriz)
-        if(input("Armazenar para à compsta?")=='s'):
+        if(input("Armazenar para a compsta?")=='s'):
             matrizcomposta.insert(0,matriztranslacao)
 
     elif inp == 4:
@@ -63,7 +63,7 @@ while (inp!=0):
         pmatriz = np.round(pmatriz,3)
         print("\n-------Matriz Scalada-------\n")
         print(pmatriz)
-        if(input("Armazenar para à compsta?")=='s'):
+        if(input("Armazenar para a compsta?")=='s'):
             matrizcomposta.insert(0,matrizscala)
 
     elif inp == 5:
@@ -71,7 +71,7 @@ while (inp!=0):
         matrizcilhamento, pmatriz = mp.cizalhamento(pmatriz,vertice)
         print("\n-------Matriz Cizalhada-------\n")
         print(pmatriz)
-        if(input("Armazenar para à compsta?")=='s'):
+        if(input("Armazenar para a compsta?")=='s'):
             matrizcomposta.insert(0,matrizcilhamento)
 
     elif inp == 6:        
