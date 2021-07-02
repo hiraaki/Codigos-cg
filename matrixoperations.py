@@ -100,7 +100,7 @@ def vetorN(vrp,p):
     N = vrp - p    
     print("N->",N)
     cN = np.round(math.sqrt((pow(N[0],2)+pow(N[1],2)+pow(N[2],2))),3)
-    print("|N|=sqrt(",N[0],"²",N[1],"²",N[2],"²",")")
+    print("|N|=sqrt(pow(",N[0],",2)+pow(",N[1],",2)+pow(",N[2],",2)",")")
     print("|N|=",cN)
     vn = np.round(np.array([
         N[0]/cN,
