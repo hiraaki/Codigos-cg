@@ -83,7 +83,7 @@ while (inp!=0):
         vrp = np.array(input("VRP:").split()).astype(float)
         p = np.array(input("P:").split()).astype(float)        
         
-        print("\n-------Matriz Translação-------\n")
+        print("\n-------Matriz Translacao-------\n")
         mT = mp.MatrizT(vrp)
 
         print("\n-------Calculo vetor n^-------\n")        
@@ -115,7 +115,7 @@ while (inp!=0):
         print("\n-------SRC -> SRP-------\n")
         dp = float(input("dp:"))
         matrizSrcSrp, pmatriz = mp.matrizProjecaoPers(matrizpontossrc,dp)
-        print("\n-------Matriz janela projeção-------\n")
+        print("\n-------Matriz janela projecao-------\n")
         dx = np.array(input("x min, x max: ").split()).astype(float)
         dy = np.array(input("y min, y max: ").split()).astype(float)
         du = np.array(input("u min, u max: ").split()).astype(float)
@@ -133,7 +133,7 @@ while (inp!=0):
         print(np.round(mcomposta,3))
     elif inp == 10:
         print("\n-------Gerando Matriz Composta SRU Para SRT-------\n")
-        print("Matriz Projeção\n",matrizjp,"\n")
+        print("Matriz Projecao\n",matrizjp,"\n")
         print("Matriz SRCSRP\n",matrizSrcSrp,"\n")
         print("Matriz SRUSRC\n",matrizsrusrc,"\n")
         mcomposta = np.dot(matrizjp,matrizSrcSrp)
@@ -151,6 +151,6 @@ while (inp!=0):
         print(np.round(matrizpontossrt,3)) 
     
     elif inp == 12:
-        print("\n-------Multiplicação Matriz Composta pela de pontos-------\n")
+        print("\n-------Multiplicacao Matriz Composta pela de pontos-------\n")
         print (np.round((np.dot(mcomposta,matriz)),3))
         

@@ -10,7 +10,7 @@ def rotacao(matriz, angulo, eixo):
     ##print(sen, cos)
     matrizres = matriz    
     matrizrotacao = []
-    print("\n-------Matriz de Rotação-------\n")
+    print("\n-------Matriz de Rotacao-------\n")
     if eixo == 'x':
         matrizrotacao = np.array( [
             [1.0, 0.0, 0.0, 0.0],
@@ -43,7 +43,7 @@ def rotacao(matriz, angulo, eixo):
     return matrizrotacao,matrizres
 
 def translacao(matriz, verticea, verticeb):
-    print("\n-------Matriz de Translação-------\n")
+    print("\n-------Matriz de Translacao-------\n")
     matriztranslacao = np.array([
         [1.0, 0.0, 0.0,  verticeb[0] - verticea[0]],
         [0.0, 1.0, 0.0, verticeb[1] - verticea[1]],
@@ -160,7 +160,7 @@ def matrizProjecaoPers(matrizSRC,dp):
         [0.0 , 0.0, 1.0, 0.0],
         [0.0 , 0.0, -(1/dp), 0.0],
     ]).astype(float)
-    print("\n-------Matriz Projeção-------\n")    
+    print("\n-------Matriz Projecao-------\n")    
     print(mpers)    
     print("\n-------Pontos Projetados-------\n")    
     mPontoPers = np.round(np.dot(mpers,matrizSRC),3)
