@@ -9,7 +9,7 @@ matrizjp = []
 matrizpontossrt = []
 vrp = []
 p = []
-n = []
+vn = []
 
 
 nimput = int(input("Numero de vertices:"))
@@ -28,7 +28,9 @@ while (inp!=0):
     print(" Centro Geometrico(6)\n Converter SRU Para SRC(7)")
     print(" Converter SRC Para SRP(8)\n Gerar Matriz Composta(9)")
     print(" Gerar Matriz Composta SRU Para SRT(10)\n Gerando Matriz de pontos de SRU Para SRT(11)")
-
+    print(" Multiplicação Matriz Composta pela de pontos(12)")
+    print(" Cirar Faces(13)")
+    
     inp = int(input("Digite a opção:"))
 
     if inp == 1:
@@ -153,4 +155,15 @@ while (inp!=0):
     elif inp == 12:
         print("\n-------Multiplicação Matriz Composta pela de pontos-------\n")
         print (np.round((np.dot(mcomposta,matriz)),3))
-        
+
+    elif inp == 13:
+        print("\n-------Matriz de pontos da face-------\n")        
+        matriz = matriz.T
+        print(matriz)
+        for i in range(int(input("Numero de Faces: "))):            
+            vertice = np.array(input("\nLista de Index da face: ").split()).astype(int)            
+            face = np.array([matriz[vertice[0]],matriz[vertice[1]],matriz[vertice[2]]])
+            mp.visibilidadeface(face,vn)
+        matriz = matriz.T
+            
+                

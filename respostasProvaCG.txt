@@ -1,3 +1,14 @@
+Questão 1
+ - Representação de curvas e superfícies por Bézier, onde atrávez da sua aplicação é possivel representar e controlar superfícies atravéz de pontos que interferiam no algulo da curva, atualmente implementado em programas de modelagem de sólidos.
+ - Armazenamento de Poligonos Winged-Edge, apresentada por Bruce G. Baumgart, o qual consentrava as informações na lista de arestas em uma estrutura de tamanho fixo, o que melhora o desempenho ao permitir verificar em tempo constante, as relações de adjacência, entre vertices, arestas, faces.
+ - unidade de processamento grafico, o desenvolvimento deste tipo de processador acelerou a computação matricial, permitindo assim que calculos que antes utilizando o processador de proposito geral demoravam para computar fossem feitos de forma mais rápida e mais eficiente, atualmente permitindo a aplicação de raytracing em tempo real.
+Questão 2
+ Coordenadas de Mundo são normalmente as coordenadas em que são representados os objetos 3D, onde uma sena possui caracteristicas de altura, largura e profundidade, para trazer esta sensação de forma mais fiel para a tela do dispozitivo, é necessário que o objeto passe por transformações entre sistemas de coordenadas, primeiro transformando do sistema de coordenadas de mundo para normalizadas e enfim para 2D.
+ Na primeira transformação, é a de coordenadas normalizadas onde dada as coordenadas de camera e de ponto de observação, é possivel transcrever o objeto de forma que possa ser convertido, 
+
+Questão 3
+ Pois as operações realizadas para manipular ou alterar de qualquer forma um objeto 3D, envolve ralizar diversas manipulação de matrizes, visto que majoritariamente envelve ou multiplicar a matriz do objeto 3D por outra matriz de transformação, ou aplicar um calculo para toda a matriz de pontos do objeto.
+
 Questão 6
 Para a solução do problema foram realizadas as seguintes operações:
  - Ta(0;0;0)
@@ -102,14 +113,14 @@ Matriz composta:
 Multiplicando a matriz Composta pela matriz de pontos originais, obtemos os mesmos resultados.
 
 Questão 7
-i)
+Para a resoluçao do problema, a geraçao das matrizes foram realizadas de acordo com as informaçoes dadas na descricao.
+i) Pontos retirados do enunciado 6
 [-10.868  -7.001  -5.67    3.98    7.847   9.178]
 [  1.64    5.736   9.832  -9.832  -5.736  -1.64 ]
 [  2.861   4.368   0.437  -4.062  -2.556  -6.487]
 [  1.      1.      1.      1.      1.      1.   ]]
 
-ii)
-
+ii)Com as informaçoes de camera de VRP e P podemos construir a matriz de translacao do VRP para a origem e do vetor n
 VRP:100 -50 70
 P:2 1 3
 
@@ -129,13 +140,13 @@ n^= [ 98. -51.  67.] / 129.205
 n^= [ 0.758 -0.395  0.519]
 
 
-iii)
+iii) Com a informaçao de viewUp Y=(0;1.0), podemos obter a de conversao de pontos SRU para SRC, sendo assim possivel obter os pontos em coordenadas de camera. A construçao da desta matriz de conversao é nescessário a multiplicaçao de uma matrizR de rotçao com a matrizT de transporte. A matrizR é construida após realizar os calculos dos vetores n, v e u, sendo assim seguem os calculos abaixo, até a obtençao dos pontos de camera: 
 -------Calculo vetor v^-------
 Vetor View Up:0 1 0
 V->= [0. 1. 0.]  -  ( ( [0. 1. 0.] * [ 0.758 -0.395  0.519] ) * [ 0.758 -0.395  0.519] )
 V->= [0. 1. 0.]  -  ( -0.395 * [ 0.758 -0.395  0.519] )
-V->= [0. 1. 0.]  -  [-0.  0. -0.] 3
-V->= [0. 1. 0.] 3
+V->= [0. 1. 0.]  -  [-0.299  0.156 -0.205]
+V->= [0.299 0.844 0.205]
 |V| =  0.919
 v^= [0.299 0.844 0.205] / 0.919
 v^= [0.325 0.918 0.223]
@@ -169,6 +180,7 @@ MsruMsrc
 VRP= [-0.  0.  0.  1.]
 
 
+iv e v)Com as informaçoes de plano de projecao foram construidos as matrizes para de transformaçao dos pontos para o plano de projeçao
 
 -------SRC -> SRP-------
 
@@ -181,7 +193,7 @@ dp:50
  [ 0.    0.    1.    0.  ]
  [ 0.    0.   -0.02  0.  ]]
 
--------Pontos Projetados-------
+-------Pontos Projetados no Plano-------
 
 [[  -7.318   -6.375   -2.384    6.776    7.72    11.711]
  [  -3.599    1.754    5.07   -10.848   -5.495   -2.179]
@@ -194,6 +206,8 @@ dp:50
  [ -1.292   0.639   1.813  -4.268  -2.198  -0.854]
  [-49.993 -49.995 -49.995 -49.995 -49.997 -49.997]
  [  1.      1.      1.      1.      1.      1.   ]]
+
+vi, vii)Com as coordeadas de window e viewport, conseguimos construir a matriz de conversao de projeçao para tela, sendo assim possivel obter as coordenadas (x,y) de tela.
 
 -------Matriz janela projeção-------
 
@@ -245,6 +259,78 @@ Matriz Composta SRUSRT
 
 -------Pontos Normalizados-------
 
+[[ 668.364  670.746  682.185  709.555  712.867  724.524]
+ [ 378.758  367.737  361.03   395.778  383.968  376.283]
+ [-139.281 -137.185 -139.835 -127.088 -124.993 -127.642]
+ [   1.       1.       1.       1.       1.       1.   ]]
+
+
+A)Faces Visiveis:
+Face ABC:
+Calculando Normal de: ['A', 'B', 'C']
+A  =  [-10.868   1.64    2.861]
+B  =  [-7.001  5.736  4.368]
+C  =  [-5.67   9.832  0.437] 
+
+B C = C - B -> C B = [-5.67   9.832  0.437] - [-7.001  5.736  4.368] = [ 1.331  4.096 -3.931]
+B A = A - B -> B A = [-10.868   1.64    2.861] - [-7.001  5.736  4.368] = [-3.867 -4.096 -1.507]
+
+->N( A B C ) = -> ^N B C  X  B A = [-22.274  17.207  10.387]
+->N= [-22.274  17.207  10.387] => ^n= [-0.742  0.574  0.346]
+
+Calculado Visibilidade
+[ 0.758 -0.395  0.519]  X  [-0.742  0.574  0.346] = -0.61
+Não Visivel
+
+Face:E B A
+Calculando Normal de: ['E', 'B', 'A']
+E  =  [ 7.847 -5.736 -2.556]
+B  =  [-7.001  5.736  4.368]
+A  =  [-10.868   1.64    2.861]
+
+B A = A - B -> A B = [-10.868   1.64    2.861] - [-7.001  5.736  4.368] = [-3.867 -4.096 -1.507]
+B E = E - B -> B E = [ 7.847 -5.736 -2.556] - [-7.001  5.736  4.368] = [ 14.848 -11.472  -6.924]
+
+->N( E B A ) = -> ^N B A  X  B E = [ 11.072 -49.151 105.18 ]
+->N= [ 11.072 -49.151 105.18 ] => ^n= [ 0.095 -0.421  0.902]
+
+Calculado Visibilidade
+[ 0.758 -0.395  0.519]  X  [ 0.095 -0.421  0.902] = 0.706
+Visivel
+
+Face:E B C
+Calculando Normal de: ['C', 'B', 'E']
+C  =  [-5.67   9.832  0.437]
+B  =  [-7.001  5.736  4.368]
+E  =  [ 7.847 -5.736 -2.556]
+
+B E = E - B -> E B = [ 7.847 -5.736 -2.556] - [-7.001  5.736  4.368] = [ 14.848 -11.472  -6.924]
+B C = C - B -> B C = [-5.67   9.832  0.437] - [-7.001  5.736  4.368] = [ 1.331  4.096 -3.931] 
+
+->N( C B E ) = -> ^N B E  X  B C = [73.457 49.152 76.087]
+->N= [73.457 49.152 76.087] => ^n= [0.63  0.421 0.652]
+
+Calculado Visibilidade
+[ 0.758 -0.395  0.519]  X  [0.63  0.421 0.652] = 0.65
+Visivel
+
+Face:E F D
+Calculando Normal de: ['D', 'F', 'E']
+D  =  [ 3.98  -9.832 -4.062]
+F  =  [ 9.178 -1.64  -6.487]
+E  =  [ 7.847 -5.736 -2.556]
+
+F E = E - F -> E F = [ 7.847 -5.736 -2.556] - [ 9.178 -1.64  -6.487] = [-1.331 -4.096  3.931]
+F D = D - F -> F D = [ 3.98  -9.832 -4.062] - [ 9.178 -1.64  -6.487] = [-5.198 -8.192  2.425]
+
+->N( D F E ) = -> ^N F E  X  F D = [ 22.27  -17.206 -10.387]
+->N= [ 22.27  -17.206 -10.387] => ^n= [ 0.742 -0.574 -0.346]
+
+Calculado Visibilidade
+[ 0.758 -0.395  0.519]  X  [ 0.742 -0.574 -0.346] = 0.61
+Visivel
+
+B)Pontos Obtidos atrávez da multiplicaçao da matriz composta SRUSRT e depois nomralizados.
 [[ 668.364  670.746  682.185  709.555  712.867  724.524]
  [ 378.758  367.737  361.03   395.778  383.968  376.283]
  [-139.281 -137.185 -139.835 -127.088 -124.993 -127.642]

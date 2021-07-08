@@ -1,5 +1,7 @@
 import numpy as np
 import math
+
+from numpy.linalg.linalg import norm
 np.set_printoptions(suppress=True)
 
 from numpy.core.records import array
@@ -186,4 +188,40 @@ def matrizjp(dx,dy,du,dv):
     mjp = np.round(mjp,3);
     print(mjp)
     return (mjp)
+
+def visibilidadeface(face, vn):
+    vetornome = input("atribua letras aos vetores:").split()
+    face = np.delete(face, 3, axis=1)
+    if np.linalg.det(face) < 0:
+        aux = np.copy(face[0])
+        face[0] = face[2]
+        face[2] = aux
+        auxn = vetornome[0]
+        vetornome[0]=vetornome[2]        
+        vetornome[2]= auxn                
+    print("Calculando Normal de:",vetornome)
+    print(vetornome[0]," = ",face[0])
+    print(vetornome[1]," = ",face[1])
+    print(vetornome[2]," = ",face[2],"\n")
+
+    vetorbc = face[2]-face[1]
+    vetorba = face[0]-face[1]
+    print(vetornome[1],vetornome[2],"=", vetornome[2],"-",vetornome[1],"->",vetornome[2],vetornome[1],"=",face[2],"-",face[1],"=",vetorbc)    
+    print(vetornome[1],vetornome[0],"=", vetornome[0],"-",vetornome[1],"->",vetornome[1],vetornome[0],"=",face[0],"-",face[1],"=",vetorba,"\n")
+
+    vetorNormal = np.round(np.cross(vetorbc,vetorba),3)
+    comprimento = np.round(math.sqrt((pow(vetorNormal[0],2)+pow(vetorNormal[1],2)+pow(vetorNormal[2],2))),3)
+    vetorNormalUnitario = np.round(vetorNormal/comprimento,3)
+    print("->N(",vetornome[0],vetornome[1],vetornome[2],") = -> ^N",vetornome[1],vetornome[2]," X ",vetornome[1],vetornome[0],"=",vetorNormal)
+    print("->N=",vetorNormal,"=>","^n=",vetorNormalUnitario,"\n")
+
+    print("Calculado Visibilidade")
+    vn = np.array(vn).astype(float)
+    visivel = np.round(vn.dot(vetorNormalUnitario),3)
+    print(vn," X ",vetorNormalUnitario,"=",visivel)
+    if visivel>0:
+        print("Visivel")
+    else:
+        print("Não Visivel")
+    
 
