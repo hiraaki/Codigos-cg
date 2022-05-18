@@ -10,6 +10,8 @@ matrizpontossrt = []
 vrp = []
 p = []
 n = []
+faces = []
+arestas = []
 
 
 nimput = int(input("Numero de vertices:"))
@@ -153,4 +155,25 @@ while (inp!=0):
     elif inp == 12:
         print("\n-------Multiplicacao Matriz Composta pela de pontos-------\n")
         print (np.round((np.dot(mcomposta,matriz)),3))
+
+    elif inp == 13:
+        arestas = []
+        print(pmatriz)
+        nimput = int(input("Numero de faces:"))
+        mimput = int(input("Numero de arestas:"))
+        for i in range(nimput):
+            start,end = input("aresta:").split()
+            estart = [
+                matriz[0][start],
+                matriz[1][start],
+                matriz[2][start],
+                matriz[3][start]
+            ]
+            eend = [
+                matriz[0][end],
+                matriz[1][end],
+                matriz[2][end],
+                matriz[3][end]
+            ]
+            arestas += [[estart],[eend]]       
         

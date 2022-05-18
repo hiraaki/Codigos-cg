@@ -153,6 +153,7 @@ def MsruMsrc(matrizR, matrizT):
     print("Matriz R * Matriz T")
     return np.array(np.dot(matrizR,matrizT))
 
+## dp é distancia entre o plano de projeção e o centro de projeção ou origem/vrp
 def matrizProjecaoPers(matrizSRC,dp):
     mpers = np.array([
         [1.0 , 0.0, 0.0, 0.0],
@@ -187,3 +188,16 @@ def matrizjp(dx,dy,du,dv):
     print(mjp)
     return (mjp)
 
+def z_edge(edge):
+    init, end = edge[0], edge[1]
+    if(init[1]>end[1]):
+        init, end = edge[1], edge[0]    
+    dx, dy, dz = end[0]-init[0], end[1]-init[1], end[2]-init[2]
+    return dx/dy, dz/dy
+
+
+def z_edges(edges):
+    zedges = []
+    for edge in range(len(edges)):
+        zedges.append(z_edge(edge))        
+        
